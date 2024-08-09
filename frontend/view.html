@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hodlinfo</title>
+    <script src="view.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="view.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="mt-4">
+        <ul>
+          <a href="#">
+            <li>
+              <h1 style="height: 50px;">HOLDINFO</h1>
+            </li>
+          </a>
+          <div class="d-flex option mt-4">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                INR
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">INR</a></li>
+              </ul>
+            </div>
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                BTC
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">BTC</a></li>
+                <li><a class="dropdown-item" href="#">ETH</a></li>
+                <li><a class="dropdown-item" href="#">USDT</a></li>
+                <li><a class="dropdown-item" href="#">XRP</a></li>
+                <li><a class="dropdown-item" href="#">TRX</a></li>
+                <li><a class="dropdown-item" href="#">DASH</a></li>
+                <li><a class="dropdown-item" href="#">ZEC</a></li>
+                <li><a class="dropdown-item" href="#">XEM</a></li>
+                <li><a class="dropdown-item" href="#">IOST</a></li>
+                <li><a class="dropdown-item" href="#">WIN</a></li>
+                <li><a class="dropdown-item" href="#">BTT</a></li>
+                <li><a class="dropdown-item" href="#">WRX</a></li>
+              </ul>
+            </div>
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                BUY ETH
+              </button>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex justify-content-end mt-4">
+            <div class="timer-circle" id="timer">60</div>
+            <a href="#" class="right-nav">
+              <button type="button" class="telegram-btn">
+                <img src="/telegram-icon.png" alt="" width="28px" />
+                Connect Telegram
+              </button>
+            </a>
+            <div class="form-check form-switch mx-4 right-nav">
+              <input
+                class="form-check-input p-2"
+                type="checkbox"
+                id="exampleCheckbox"
+                role="switch"
+              />
+            </div>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <main class="hero-main">
+      <div class="row m-0 p-0 text-white hero">
+        <div class="col-2">
+          <div>
+            <span class="hero-list">0.1%</span>
+            <div class="hero-list-desription">1.25hr</div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div>
+            <span class="hero-list">5%</span>
+            <div class="hero-list-desription">1 Hour</div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div>
+            <div>Best Price to Trade</div>
+            <span class="hero-list text-white">₹ 26,56,110</span>
+            <div class="hero-list-desription">
+              Average BTC/INR net price including commission
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div>
+            <span class="hero-list">20.73%</span>
+            <div class="hero-list-desription">1 Day</div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div>
+            <span class="hero-list">7.51%</span>
+            <div class="hero-list-desription">7 Days</div>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <section class="table">
+      <table class="table table-dark table-striped">
+        <thead class="">
+          <tr class="list">
+            <th>#</th>
+            <th>Platform</th>
+            <th>Last Traded Price</th>
+            <th>Buy / Sell Price</th>
+            <th>Difference</th>
+            <th>Volumes</th>
+            <th>Base Unit</th>
+          </tr>
+        </thead>
+        <tbody id="crypto-table-body" class="text-center">
+        </tbody>
+      </table>
+    </section>
+    <footer>
+      <form class="home-footer">
+        <button class="home-btn" type="submit">
+          Add Hodlinfo to Home Screen
+        </button>
+      </form>
+    </footer>
+
+   
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    
+    <script>
+      function startTimer(duration, display) {
+        var timer = duration;
+        setInterval(function () {
+          display.textContent = timer;
+
+          if (--timer < 0) {
+            timer = duration;
+          }
+        }, 1000);
+      }
+
+      window.onload = function () {
+        var display = document.getElementById("timer");
+        startTimer(60, display);
+      };
+
+      async function fetchData() {
+        try {
+          const response = await axios.get("http://localhost:7001/saveddata");
+          console.log(response);
+          const dataObject = response.data.data;
+
+          const data = Object.values(dataObject);
+          console.log("data from server", response.data.data);
+
+          const tableBody = document.getElementById("crypto-table-body");
+          console.log("type of data", typeof data);
+
+          const formatName = (name) => {
+            if (typeof name !== 'string') return name;
+            return name
+              .split(/([ /])/)
+              .map((part) => {
+                return part.trim() !== "" && !part.match(/[ /]/)
+                  ? part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
+                  : part;
+              })
+              .join("");
+          };
+
+          const formatDifference = (difference) => {
+            if (typeof difference !== "number") return difference;
+            return difference.toFixed(2);
+          };
+
+          data.map((item, index) => {
+            console.log("item", item);
+
+            const row = `
+              <tr class="list text-center">
+                <td>${index + 1}</td>
+                <td>${formatName(item.name)}</td>
+                <td>₹ ${item.last}</td>
+                <td>₹ ${item.buy} / ₹ ${item.sell}</td>
+                <td style="color: ${item.difference >= 0 ? "#3dc6c1" : "red"};">${formatDifference(item.difference)}%</td>
+                <td>${item.volume}</td>
+                <td>${item.base_unit}</td>
+              </tr>
+              
+            `;
+            tableBody.insertAdjacentHTML("beforeend", row);
+          });
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      }
+
+      fetchData();
+    </script>
+  </body>
+</html>
