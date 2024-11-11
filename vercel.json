@@ -3,7 +3,7 @@
   "builds": [
     {
       "src": "frontend/**/*",
-      "use": "@vercel/static"
+      "use": "@vercel/html,css,javascript"
     },
     {
       "src": "backend/server.js",
@@ -12,7 +12,7 @@
   ],
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/api/(.*)",
       "destination": "/backend/$1"
     }
   ]
